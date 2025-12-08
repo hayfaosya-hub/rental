@@ -8,7 +8,7 @@
             <h4><b>Data Peminjaman Rental Skanega</b></h4>
         </div>
         <div class="panel-body">
-            <a href="pinjam_tambah.php" class="btn btn-success btn-sm">+ Tambah Peminjaman</a>
+            <a href="pinjam_tambah.php" class="btn btn-primary btn-sm">+ Tambah Peminjaman</a>
             <br><br>
             <table class="table table-bordered table-striped">
                 <tr>
@@ -42,20 +42,22 @@
                             ?>
                         </td>
                         <td>
-                            <div style="display:flex; gap:6px; flex-wrap:nowrap;">
-                                <a href="pinjam_edit.php?id=<?php echo $d['pinjam_id']; ?>" 
-                                    class="btn btn-sm btn-primary">Edit</a>
+                            <?php if($d['pinjam_status'] == '1'){ ?>                           
+                                <span class="label label-success" style="display:block; text-align:center;">Selesai</span>
+                            <?php } else { ?>
+                                <div style="display:flex; gap:6px; flex-wrap:nowrap;">
+                                    <a href="pinjam_edit.php?id=<?php echo $d['pinjam_id']; ?>" 
+                                        class="btn btn-sm btn-primary">Edit</a>
 
-                                <a href="pinjam_hapus.php?id=<?php echo $d['pinjam_id']; ?>" 
-                                    class="btn btn-sm btn-danger">Batalkan</a>
+                                    <a onclick="return confirm('Yakin batalkan?')" 
+                                        href="pinjam_hapus.php?id=<?php echo $d['pinjam_id']; ?>" 
+                                        class="btn btn-sm btn-danger">Batalkan</a>
 
-                                <?php if($d['pinjam_status'] == '2'){ ?>
                                     <a href="pinjam_kembalikan.php?id=<?php echo $d['pinjam_id']; ?>" 
                                         class="btn btn-sm btn-success">Dikembalikan</a>
-                                <?php } ?>
-                            </div>
+                                </div>
+                            <?php } ?>
                         </td>
-
                     </tr>
                 <?php
                     }

@@ -54,7 +54,7 @@
                                 <i class="glyphicon glyphicon-ok-circle"></i>
                                 <span class="pull-right">
                                     <?php
-                                        $ready = mysqli_query($koneksi,"SELECT * FROM pinjam  WHERE pinjam_status='1'");
+                                        $ready = mysqli_query($koneksi,"SELECT * FROM kendaraan where kendaraan_status=1");
                                         echo mysqli_num_rows($ready);
                                     ?>
                                 </span>
